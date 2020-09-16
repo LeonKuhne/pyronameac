@@ -2,7 +2,7 @@
 > uses sed & regex
 
 ### Usage
-- `pyro [filename without extension] "[python exec params]"` (eg. pyro german "mamamia"), creates and runs [filename without extension].py
+- `pyro [filename without extension] "[python exec params]"` (eg. pyro german "mamamia"), creates and runs `[filename without extension].py`
 - use flag `-c` to compile without running
 - use flag `-d` to show config details
 
