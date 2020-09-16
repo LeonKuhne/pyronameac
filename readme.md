@@ -1,3 +1,2 @@
-# Configurable Transpiler for Python
-
-Using bash tool 'sed', lets see if we can make a programming language transpiler.
+# Configurable Transpiler for Python written in bash
+> uses sed & regex

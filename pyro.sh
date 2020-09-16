@@ -6,9 +6,9 @@ PYFILE="$1.py"
 PYROFILE="$1.pyro"
 
 # fancy print: "Transpiling [filename.pyro]."
-#tput setaf 3 && echo -n "Transpiling "
-#tput setaf 6 && echo -n "$PYROFILE"
-#tput setaf 3 && echo "."
+tput setaf 3 && echo -n "Transpiling "
+tput setaf 6 && echo -n "$PYROFILE"
+tput setaf 3 && echo "."
 
 # copy the file to .py
 if test -f $PYFILE; then
@@ -41,18 +41,17 @@ cat .pyro | while read line; do
 
     # go through every line in the [name].pyro file
     # if theres a match, then replace
-    regex=$(cat pyro.regex)
-    sed -E "$regex" $PYFILE
+    regex=$(~/.config/pyro/pyro.regex $key $val)
+    sed -Ei "$regex" $PYFILE
 
   fi
 done
 
 # run the file
 if [[ $* != *-c* ]]; then
-  #echo "Running..."
-  #tput setab 0 && tput setaf 7 && echo "> python $PYFILE" && tput setaf 9
-  echo
-  #python $PYFILE
+  echo "Running..."
+  tput setab 0 && tput setaf 7 && echo "> python $PYFILE" && tput setaf 9
+  python $PYFILE
 fi
 
 
