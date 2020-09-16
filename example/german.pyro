@@ -2,7 +2,6 @@
 
 nimm sys
 
-# take in the first argument
 zu_lang = masse(sys.argv[1]) > 5
 
 wenn zu_lang == Nein:
