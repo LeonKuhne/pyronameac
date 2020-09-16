@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# file locations
+if [ -z "$PYRO_REGEX" ]; then
+  PYRO_REGEX=~/.config/pyro/pyro.regex
+fi
+if [ -z "$PYRO_CONFIG" ]; then
+  PYRO_CONFIG=.pyro
+fi
+
 # define delimiter
 IFS=': '
 PYFILE="$1.py"
@@ -23,7 +31,7 @@ if [[ $* == *-d* ]]; then
 fi
 
 # go through every line in the .pyro file
-cat .pyro | while read line; do
+cat $PYRO_CONFIG | while read line; do
 
   # check if line is empty
   if [ ! -z "$line" ]; then
@@ -41,7 +49,7 @@ cat .pyro | while read line; do
 
     # go through every line in the [name].pyro file
     # if theres a match, then replace
-    regex=$(~/.config/pyro/pyro.regex $key $val)
+    regex=$($PYRO_REGEX $key $val)
     sed -Ei "$regex" $PYFILE
 
   fi
@@ -51,7 +59,7 @@ done
 if [[ $* != *-c* ]]; then
   echo "Running..."
   tput setab 0 && tput setaf 7 && echo "> python $PYFILE" && tput setaf 9
-  python $PYFILE
+  python $PYFILE $2
 fi
 
 

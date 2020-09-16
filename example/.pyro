@@ -1,0 +1,7 @@
+import: nimm
+len: masse
+True: Ja
+False: Nein
+if: wenn
+else: sonst
+print: druck
