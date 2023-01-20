@@ -50,7 +50,7 @@ cat $PYRO_CONFIG | while read line; do
     # go through every line in the [name].pyro file
     # if theres a match, then replace
     regex=$($PYRO_REGEX $key $val)
-    sed -Ei "$regex" $PYFILE
+    sed -E -i "" "$regex" $PYFILE
 
   fi
 done
